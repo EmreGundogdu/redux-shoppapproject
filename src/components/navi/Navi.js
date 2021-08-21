@@ -1,42 +1,36 @@
 import React from "react";
-import {
-  Collapse,
-  Navbar,
-  NavbarToggler,
-  NavbarBrand,
-  Nav,
-  NavItem,
-  NavLink,
-} from "reactstrap";
+import { Nav, NavItem, NavLink } from "reactstrap";
 
 export default class Navi extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.toggle = this.toggle.bind(this);
-    this.state = {
-      isOpen: false,
-    };
-  }
-  toggle() {
-    this.setState({
-      isOpen: !this.state.isOpen,
-    });
-  }
   render() {
     return (
       <div>
-        <Navbar color="light" light expand="md">
-          <NavbarBrand></NavbarBrand>
-          <NavbarToggler onClick={this.toggle} />
-          <Collapse isOpen={this.state.isOpen} navbar>
-            <Nav className="ml-auto" navbar>
-              <NavItem>
-                <NavLink></NavLink>
-              </NavItem>
-            </Nav>
-          </Collapse>
-        </Navbar>
+        <p>List Based</p>
+        <Nav>
+          <NavItem>
+            <NavLink href="#">Link</NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink href="#">Link</NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink href="#">Another Link</NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink disabled href="#">
+              Disabled Link
+            </NavLink>
+          </NavItem>
+        </Nav>
+        <hr />
+        <p>Link Based</p>
+        <Nav>
+          <NavLink href="#">Link</NavLink> <NavLink href="#">Link</NavLink>{" "}
+          <NavLink href="#">Another Link</NavLink>{" "}
+          <NavLink disabled href="#">
+            Disabled Link
+          </NavLink>
+        </Nav>
       </div>
     );
   }
