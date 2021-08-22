@@ -1,15 +1,36 @@
-import React from "react";
-import { Nav, NavItem, NavLink } from "reactstrap";
+import React, { useState } from "react";
+import {
+  Nav,
+  NavItem,
+  Dropdown,
+  DropdownItem,
+  DropdownToggle,
+  DropdownMenu,
+  NavLink,
+} from "reactstrap";
 
 export default class Navi extends React.Component {
   render() {
     return (
       <div>
-        <p>List Based</p>
-        <Nav>
+        <Nav tabs>
           <NavItem>
-            <NavLink href="#">Link</NavLink>
+            <NavLink href="#" active>
+              Link
+            </NavLink>
           </NavItem>
+          <Dropdown nav>
+            <DropdownToggle nav caret>
+              Dropdown
+            </DropdownToggle>
+            <DropdownMenu>
+              <DropdownItem header>Header</DropdownItem>
+              <DropdownItem disabled>Action</DropdownItem>
+              <DropdownItem>Another Action</DropdownItem>
+              <DropdownItem divider />
+              <DropdownItem>Another Action</DropdownItem>
+            </DropdownMenu>
+          </Dropdown>
           <NavItem>
             <NavLink href="#">Link</NavLink>
           </NavItem>
@@ -21,15 +42,6 @@ export default class Navi extends React.Component {
               Disabled Link
             </NavLink>
           </NavItem>
-        </Nav>
-        <hr />
-        <p>Link Based</p>
-        <Nav>
-          <NavLink href="#">Link</NavLink> <NavLink href="#">Link</NavLink>{" "}
-          <NavLink href="#">Another Link</NavLink>{" "}
-          <NavLink disabled href="#">
-            Disabled Link
-          </NavLink>
         </Nav>
       </div>
     );
