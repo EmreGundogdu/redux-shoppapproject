@@ -12,6 +12,9 @@ export default function cartReducer(state = initalState.cart, action) {
                     }
                     return cartItem;
                 })
+                return newState;
+            } else {
+                return [...state, { ...action.payload }]
             }
         default:
             return state;
