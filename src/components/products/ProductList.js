@@ -7,7 +7,10 @@ class ProductList extends Component {
   render() {
     return (
       <div>
-        <h3>Products <Badge style={{ color: "green" }}>{this.props.currentCategory.categoryName}</Badge></h3>
+        <h3>
+          <Badge style={{ color: "blue" }}>Products</Badge>
+          <Badge style={{ color: "green" }}>{this.props.currentCategory.categoryName}</Badge>
+        </h3>
       </div>
     );
   }
