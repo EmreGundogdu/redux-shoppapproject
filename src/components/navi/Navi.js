@@ -14,21 +14,20 @@ export default class Navi extends React.Component {
   render() {
     return (
       <div>
-        <Navbar >
-          <NavbarBrand href="/">dasdsa</NavbarBrand>
-          <NavbarToggler>
-            <Collapse>
-              <Nav>
-                <NavItem>
-                  <NavLink href="">components</NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink href="">github</NavLink>
-                </NavItem>
-                <CartSummary />
-              </Nav>
-            </Collapse>
-          </NavbarToggler>
+        <Navbar>
+          <NavbarBrand href="/">reactstrap</NavbarBrand>
+          <NavbarToggler />
+          <Collapse navbar>
+            <Nav className="ml-auto" navbar>
+              <NavItem>
+                <NavLink href="">components</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink href="">github</NavLink>
+              </NavItem>
+              <CartSummary />
+            </Nav>
+          </Collapse>
         </Navbar>
       </div>
     );

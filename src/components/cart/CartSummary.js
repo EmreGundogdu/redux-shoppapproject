@@ -1,33 +1,55 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { DropdownItem, DropdownMenu, DropdownToggle, UncontrolledDropdown } from 'reactstrap'
+import React, { Component } from "react";
+import {
+  DropdownItem,
+  DropdownMenu,
+  DropdownToggle,
+  UncontrolledDropdown,
+  NavItem,
+  NavLink,
+} from "reactstrap";
+import { connect } from "react-redux";
 
-export default class CartSummary extends Component {
-    static propTypes = {
-        prop: PropTypes
-    }
+class CartSummary extends Component {
+  renderEmpty() {
+    return (
+      <NavItem>
+        <NavLink>Sepet Boş</NavLink>
+      </NavItem>
+    );
+  }
+  renderSummary() {
+    return (
+      <UncontrolledDropdown nav inNavbar>
+        <DropdownToggle nav caret>
+          Sepetiniz
+        </DropdownToggle>
+        <DropdownMenu right>
+          {this.props.cart.map((cartItem) => (
+            <DropdownItem key={cartItem.product.id}>
+              {cartItem.product.productName}
+              <p style={{ color: "green" }}>{cartItem.quantity}</p>
+            </DropdownItem>
+          ))}
 
-    render() {
-        return (
-            <div>
-                <UncontrolledDropdown nav inNavbar>
-                    <DropdownToggle nav caret>
-                        Options
-                    </DropdownToggle>
-                    <DropdownMenu right>
-                        <DropdownItem>
-                            Option 1
-                        </DropdownItem>
-                        <DropdownItem>
-                            Option 2
-                        </DropdownItem>
-                        <DropdownItem />
-                        <DropdownItem>
-                            Reset
-                        </DropdownItem>
-                    </DropdownMenu>
-                </UncontrolledDropdown>
-            </div>
-        )
-    }
+          <DropdownItem>Option 2</DropdownItem>
+          <DropdownItem diver />
+          <DropdownItem>Sepete Git</DropdownItem>
+        </DropdownMenu>
+      </UncontrolledDropdown>
+    );
+  }
+  render() {
+    return (
+      <div>
+        {this.props.cart.length > 0 ? this.renderSummary() : this.renderEmpty()}
+      </div>
+    );
+  }
 }
+
+function mapStateToProps(state) {
+  return {
+    cart: state.cartReducer,
+  };
+}
+export default connect(mapStateToProps)(CartSummary);
